@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age in Days</title>
+</head>
+<body>
+    <script>
+        //OBJECT
+        const person = {
+            firstName: "John",
+            lastName: "doe",
+            age: 27
+        }
+        //MAIN FUNCTION
+        function ageInDays(obj, callback) {
+            const fullName = `${obj.firstName} ${obj.lastName}`;
+            const ageInDays =  obj.age * 365;
+            return callback(fullName, ageInDays);
+        }
+
+        //CALLBACK FUNCTION
+        function messageDisplay(fullName, ageInDays) {
+            message = `The person's fullname is ${fullName} and their age in days is ${ageInDays}.`;
+            return message;
+        }
+
+        //CALLING THE FUNCTION
+        const result = ageInDays(person, messageDisplay);
+        console.log(result);
+    </script>
+</body>
+</html>
