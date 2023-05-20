@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrange in alphabetical order</title>
+</head>
+<body>
+    <script>
+    //OBJECT
+    const books = [
+        { title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+        { title: '1984', author: 'George Orwell', year: 1949 },
+        { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+        ];
+
+        //MAIN FUNCTION
+        function arrangeList(list, callback) {
+            const newList = list.map(item => item.title);
+            console.log(newList);
+            return callback(newList);
+        }
+
+        //CALLBACK FUNCTION
+        function newList(newList) {
+            console.log(newList.sort());
+        }
+
+        //Calling the function
+        arrangeList(books, newList);
+
+    </script>
+</body>
+</html>
