@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple requests</title>
+</head>
+<body>
+    <script>
+        //URL's
+        const urlOne = 'https://jsonplaceholder.typicode.com/todos/1';
+        const urlTwo =  'https://jsonplaceholder.typicode.com/posts/1';
+
+        //MAIN FUNCTION
+        async function fetchData(urlOne, urlTwo) {
+            try {
+                const [responseOne, responseTwo] = await Promise.all([fetch(urlOne), fetch(urlTwo)]);
+                const dataOne = await responseOne.json();
+                const dataTwo = await responseTwo.json();
+                return {
+                    "todo": dataOne,
+                    "post": dataTwo
+                } 
+                } catch (error) {
+                    throw new Error(error);
+            }
+        }
+
+        //calling the function
+        fetchData(urlOne, urlTwo)
+          .then((obj) => {
+            console.log(obj);
+          })
+
+        .catch((error) => {
+            console.error(error);
+        })  
+    </script>
+</body>
+</html>
