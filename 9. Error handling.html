@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+</head>
+<body>
+    <script>
+        //URL
+        const url = 'https://jsonplaceholder.typicode.com/posts/123456789';
+
+        //MAIN FUNCTION
+        async function errorHandle(url) {
+            try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Error: ' + response.status)
+            }
+            const data = await response.json();
+            return data;
+            } catch (error) {
+                throw new Error('Error: ' + error.message);
+            }
+        }
+
+        //CALLING THE FUNCTION
+        errorHandle(url)
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error(error);
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'An error occured: ' + error.message;
+            document.body.appendChild(errorMessage);
+        })
+    </script>
+</body>
+</html>
