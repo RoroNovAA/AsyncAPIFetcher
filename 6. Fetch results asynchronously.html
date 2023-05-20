@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch results asynchronously</title>
+</head>
+<body>
+<script>
+    //URL
+    const url = 'https://jsonplaceholder.typicode.com/todos/1';
+
+    //writing asynchronous function
+    async function fetchData(url) {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    //calling the function 
+    fetchData(url)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+</script>
+</body>
+</html>
